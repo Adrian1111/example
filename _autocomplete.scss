@@ -1,0 +1,48 @@
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+
+example-autocomplete {
+  display: block;
+  .input-group {
+    background-color: map-get($color-navy, 300) !important;
+    outline: 0.075rem solid transparent;
+    &:focus-within {
+      outline: 0.075rem solid map-get($color-teal, 500);
+    }
+
+    input {
+      background-color: map-get($color-navy, 300) !important;
+      padding: 10px;
+      font-size: 14px;
+
+      &::placeholder {
+        color: map-get($color-gray, 500);
+      }
+    }
+  }
+}
+
+.example-autocomplete-list {
+  &.dropdown-options {
+    overflow: auto;
+  }
+
+  background-color: map-get($color-navy, 600);
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: block;
+  overflow-y: scroll;
+  outline: 0.075rem solid map-get($color-teal, 500);
+  z-index: 99999;
+}
+
+.example-autocomplete-option {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  display: block;
+
+  &:hover {
+    background-color: map-get($color-navy, 300);
+  }
+}

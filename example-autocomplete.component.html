@@ -1,0 +1,28 @@
+<div class="control">
+  <div class="input-group rounded-0 mb-0">
+    <input
+      #search
+      class="text-white pr-3 flex-grow-1 rounded-0 border-0"
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [exAutocomplete]="autocomplete"
+      [labelField]="labelField"
+      (selected)="onSelected($event); onManuallySelected($event)"
+      (keyup)="filter(search.value)"
+      (click)="filter(search.value)"
+    />
+    <div class="input-group-append align-items-center pr-2">
+      <example-icon svgName="search" *ngIf="!search.value"></example-icon>
+      <example-icon svgName="close" class="px-1" *ngIf="search.value" (click)="onClear()"></example-icon>
+    </div>
+  </div>
+</div>
+<example-autocomplete-list #autocomplete="exAutocompleteList">
+  <ng-template exAutocompleteContent>
+    <ng-container>
+      <example-autocomplete-option *ngFor="let option of filteredOptions" [value]="option">
+        {{ option[labelField] }}
+      </example-autocomplete-option>
+    </ng-container>
+  </ng-template>
+</example-autocomplete-list>
